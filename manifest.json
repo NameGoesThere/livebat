@@ -1,0 +1,14 @@
+{
+    "name": "livebat",
+    "name_pretty": "LiveBat",
+    "namespace": "namegoesthere",
+    "version_number": "1.0.0",
+    "description": "Bloodthief mod that lets you race your friends in real time.",
+    "dependencies": [],
+    "incompatibilities": [],
+    "authors": ["namegoesthere"],
+    "tags": ["multiplayer"],
+    "description_rich": "Bloodthief mod that lets you race your friends in real time.",
+    "download": "https://github.com/NameGoesThere/livebat/releases/latest/download/livebat.zip",
+    "repo": "https://github.com/NameGoesThere/livebat"
+}

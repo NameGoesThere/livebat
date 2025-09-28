@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://3jhqkv6lxxsk"]
+
+[ext_resource type="PackedScene" uid="uid://6c2w3esjwq4g" path="res://blender/characters/bat/bat_combined_4_0.glb" id="1_4na24"]
+[ext_resource type="Script" uid="uid://crjonqt3mkwwo" path="res://scripts/components/look_at_player.gd" id="2_kxlc5"]
+[ext_resource type="Material" uid="uid://dvkmhs0olmhvc" path="res://materials/effects/simple_ghost_material.tres" id="3_p0ea3"]
+[ext_resource type="PackedScene" uid="uid://csllp63xil6pr" path="res://scenes/particle_scenes/ghost_trail_particle.tscn" id="4_4xjly"]
+[ext_resource type="FontFile" uid="uid://c07202amo6a6k" path="res://fonts/alagard-12px-unicode/alagard-12px-unicode.ttf" id="5_8o0du"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_out02"]
+material = ExtResource("3_p0ea3")
+size = Vector2(4, 4)
+
+[node name="Visual" type="Node3D"]
+top_level = true
+
+[node name="bat_combined_4_0" parent="." instance=ExtResource("1_4na24")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.59, 0)
+
+[node name="Skeleton3D" parent="bat_combined_4_0/Armature" index="0"]
+bones/0/position = Vector3(0.0829711, -0.256408, 4.89314e-09)
+bones/0/rotation = Quaternion(-1.17103e-08, 1.17103e-08, -0.614558, 0.788871)
+bones/1/rotation = Quaternion(-0.745606, 0.0351405, 0.177766, 0.641277)
+bones/2/rotation = Quaternion(-0.0902837, 1.33811e-07, -3.8524e-08, 0.995916)
+bones/3/rotation = Quaternion(-0.0888737, -9.48973e-08, -2.58129e-08, 0.996043)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0462596, 1.76848e-08, -3.01368e-08, 0.99893)
+bones/5/rotation = Quaternion(-0.0722466, 1.2147e-07, -4.44209e-08, 0.997387)
+bones/6/rotation = Quaternion(-0.0213888, -3.57419e-10, -2.33899e-08, 0.999771)
+bones/7/rotation = Quaternion(0.11354, 1.45154e-08, 6.80392e-08, 0.993533)
+bones/8/rotation = Quaternion(0.00361135, -1.08096e-07, 9.29293e-09, 0.999994)
+bones/9/rotation = Quaternion(0.745605, -0.0351406, 0.177766, 0.641278)
+bones/10/rotation = Quaternion(0.0902834, 7.4216e-07, 5.19324e-08, 0.995916)
+bones/11/rotation = Quaternion(0.088874, -8.23055e-07, 3.33389e-08, 0.996043)
+bones/12/rotation = Quaternion(0.0462601, 4.75902e-07, 1.05624e-08, 0.998929)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(0.0722471, -7.49388e-09, 4.08429e-08, 0.997387)
+bones/14/rotation = Quaternion(0.0213891, 1.54776e-08, -5.92892e-09, 0.999771)
+bones/15/rotation = Quaternion(-0.11354, 4.9351e-09, -8.41838e-08, 0.993533)
+bones/16/rotation = Quaternion(-0.00361149, -4.65701e-07, -5.55423e-09, 0.999994)
+bones/17/position = Vector3(-1.01523, -0.102482, -2.14884)
+bones/17/rotation = Quaternion(-0.5, 0.5, -0.5, 0.5)
+bones/18/position = Vector3(0.182573, -0.204997, -0.906474)
+bones/18/rotation = Quaternion(-0.707107, 4.26326e-14, -0.707107, 0)
+bones/19/position = Vector3(-1.01523, -0.102482, 2.14884)
+bones/19/rotation = Quaternion(0.707107, 2.98023e-08, 1.49012e-08, 0.707107)
+bones/20/position = Vector3(0.182573, -0.204997, 0.906474)
+bones/20/rotation = Quaternion(-0.707107, 4.26326e-14, -0.707107, 0)
+
+[node name="body" parent="bat_combined_4_0/Armature/Skeleton3D" index="0"]
+ignore_occlusion_culling = true
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.589728, 0)
+script = ExtResource("2_kxlc5")
+lock_y = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.709166)
+ignore_occlusion_culling = true
+mesh = SubResource("QuadMesh_out02")
+skeleton = NodePath("../../..")
+
+[node name="GhostTrailParticle" parent="." instance=ExtResource("4_4xjly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.446515, 0)
+
+[node name="Name" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00161314, 1.53351, 0.00718784)
+ignore_occlusion_culling = true
+billboard = 1
+no_depth_test = true
+modulate = Color(1, 0, 0, 1)
+text = "Username"
+font = ExtResource("5_8o0du")
+font_size = 128
+outline_size = 24
+
+[editable path="bat_combined_4_0"]
